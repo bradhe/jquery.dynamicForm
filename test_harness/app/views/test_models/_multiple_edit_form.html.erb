@@ -20,7 +20,7 @@
 
 <div class="field">
   <%= label_tag "#{form_element_prefix}[selectable_two]", 'Selectable Two:' %><br />
-  <%= check_box_tag "#{form_element_prefix}[selectable_two]", test_model.selectable_two %>
+  <%= check_box_tag "#{form_element_prefix}[selectable_two]", 1, (not test_model.selectable_two.nil?) %>
 </div>
 
 <% if include_submit %>

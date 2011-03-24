@@ -41,7 +41,7 @@
   $(function() {
     var forms = $('#test_models').dynamicForm({
       success: function(data) {
-        $('div.elements').html(data);
+        $(data).pagedDialog({ pageSelector: 'div.edit.form' });
       },
       error: function(data) {
         alert('Error.');
