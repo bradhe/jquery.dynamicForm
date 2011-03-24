@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @test_model.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @test_model.description %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @test_model.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_test_model_path(@test_model) %> |
+<%= link_to 'Back', test_models_path %>

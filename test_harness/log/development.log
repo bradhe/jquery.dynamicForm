@@ -1,0 +1,846 @@
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (130.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (70.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateTestModels (20110323222917)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateTestModels (20110323222917)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "test_models" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" varchar(255), "weight" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110323222917')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  PRAGMA index_list("test_models")
+
+
+Started GET "/" for 127.0.0.1 at Wed Mar 23 15:32:56 -0700 2011
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered C:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Mar 23 15:33:22 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 166ms (Views: 19.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:33:24 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (64.0ms)
+Rendered test_models/new.html.erb within layouts/application (71.0ms)
+Completed 200 OK in 94ms (Views: 88.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:33:32 -0700 2011
+  Processing by TestModelsController#create as HTML
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"test1", "weight"=>"asdfasdf", "description"=>"test3"}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (12.0ms)[0m  [1mINSERT INTO "test_models" ("updated_at", "weight", "description", "created_at", "name") VALUES ('2011-03-23 22:33:32.967668', 0, 'test3', '2011-03-23 22:33:32.967668', 'test1')[0m
+Redirected to http://localhost:3000/test_models/1
+Completed 302 Found in 307ms
+
+
+Started GET "/test_models/1" for 127.0.0.1 at Wed Mar 23 15:33:33 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 1) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 30ms (Views: 22.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:34:13 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (6.0ms)
+Rendered test_models/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 33ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:35:22 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (7.0ms)
+Rendered test_models/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 35ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:36:01 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (7.0ms)
+Rendered test_models/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 34ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:36:19 -0700 2011
+  Processing by TestModelsController#create as HTML
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"fasd", "weight"=>"", "description"=>""}}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "test_models" ("description", "weight", "updated_at", "created_at", "name") VALUES ('', NULL, '2011-03-23 22:36:19.970668', '2011-03-23 22:36:19.970668', 'fasd')[0m
+Redirected to http://localhost:3000/test_models/2
+Completed 302 Found in 124ms
+
+
+Started GET "/test_models/2" for 127.0.0.1 at Wed Mar 23 15:36:20 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 2) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 78ms (Views: 67.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/test_models/2" for 127.0.0.1 at Wed Mar 23 15:36:41 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTestModel Load (0.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 2) LIMIT 1[0m
+Rendered test_models/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 37ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:36:48 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (12.0ms)
+Rendered test_models/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 46ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:37:56 -0700 2011
+  Processing by TestModelsController#create as HTML
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"fds", "weight"=>"23", "description"=>"asd"}}
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "test_models" ("updated_at", "weight", "description", "name", "created_at") VALUES ('2011-03-23 22:37:56.424668', 23, 'asd', 'fds', '2011-03-23 22:37:56.424668')
+Redirected to http://localhost:3000/test_models/3
+Completed 302 Found in 89ms
+
+
+Started GET "/test_models/3" for 127.0.0.1 at Wed Mar 23 15:37:56 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 3) LIMIT 1[0m
+Rendered test_models/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 26ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:39:09 -0700 2011
+  Processing by TestModelsController#create as HTML
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"fds", "weight"=>"23", "description"=>"asd"}}
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "test_models" ("weight", "name", "updated_at", "created_at", "description") VALUES (23, 'fds', '2011-03-23 22:39:09.051668', '2011-03-23 22:39:09.051668', 'asd')
+Redirected to http://localhost:3000/test_models/4
+Completed 302 Found in 134ms
+
+
+Started GET "/test_models/4" for 127.0.0.1 at Wed Mar 23 15:39:09 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 4) LIMIT 1[0m
+Rendered test_models/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 75ms (Views: 26.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/test_models/4" for 127.0.0.1 at Wed Mar 23 15:39:10 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 4) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 39ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:39:11 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 39ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:39:12 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (7.0ms)
+Rendered test_models/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 48ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:39:50 -0700 2011
+  Processing by TestModelsController#create as */*
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "test_models" ("updated_at", "description", "name", "weight", "created_at") VALUES ('2011-03-23 22:39:50.797668', NULL, NULL, NULL, '2011-03-23 22:39:50.797668')[0m
+Redirected to http://localhost:3000/test_models/5
+Completed 302 Found in 119ms
+
+
+Started GET "/test_models/5" for 127.0.0.1 at Wed Mar 23 15:39:50 -0700 2011
+  Processing by TestModelsController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 5) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 26ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 15:39:58 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 82ms (Views: 32.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/5" for 127.0.0.1 at Wed Mar 23 15:39:59 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 5) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 30ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:40:02 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (9.0ms)
+Rendered test_models/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 38ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:41:23 -0700 2011
+  Processing by TestModelsController#create as */*
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "test_models" ("name", "created_at", "description", "weight", "updated_at") VALUES (NULL, '2011-03-23 22:41:23.771668', NULL, NULL, '2011-03-23 22:41:23.771668')[0m
+Redirected to http://localhost:3000/test_models/6
+Completed 302 Found in 116ms
+
+
+Started GET "/test_models/6" for 127.0.0.1 at Wed Mar 23 15:41:23 -0700 2011
+  Processing by TestModelsController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 6) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 27ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:41:38 -0700 2011
+  Processing by TestModelsController#create as */*
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "test_models" ("description", "name", "weight", "created_at", "updated_at") VALUES (NULL, NULL, NULL, '2011-03-23 22:41:38.566668', '2011-03-23 22:41:38.566668')[0m
+Redirected to http://localhost:3000/test_models/7
+Completed 302 Found in 107ms
+
+
+Started GET "/test_models/7" for 127.0.0.1 at Wed Mar 23 15:41:40 -0700 2011
+  Processing by TestModelsController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 7) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 73ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 15:41:44 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 41ms (Views: 34.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/7" for 127.0.0.1 at Wed Mar 23 15:41:45 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 7) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 27ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:43:23 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (7.0ms)
+Rendered test_models/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 35ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:43:39 -0700 2011
+  Processing by TestModelsController#create as */*
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf1", "weight"=>"asdfd", "description"=>"asd23"}}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "test_models" ("created_at", "description", "name", "weight", "updated_at") VALUES ('2011-03-23 22:43:39.095668', 'asd23', 'asdf1', 0, '2011-03-23 22:43:39.095668')[0m
+Redirected to http://localhost:3000/test_models/8
+Completed 302 Found in 155ms
+
+
+Started GET "/test_models/8" for 127.0.0.1 at Wed Mar 23 15:43:40 -0700 2011
+  Processing by TestModelsController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 8) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 31ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:48:55 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (6.0ms)
+Rendered test_models/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 78ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:49:12 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (10.0ms)
+Rendered test_models/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 44ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:49:31 -0700 2011
+  Processing by TestModelsController#create as */*
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf123", "weight"=>"fga3", "description"=>"fdsa123"}}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "test_models" ("description", "created_at", "weight", "name", "updated_at") VALUES ('fdsa123', '2011-03-23 22:49:31.470313', 0, 'asdf123', '2011-03-23 22:49:31.470313')[0m
+Redirected to http://localhost:3000/test_models/9
+Completed 302 Found in 115ms
+
+
+Started GET "/test_models/9" for 127.0.0.1 at Wed Mar 23 15:49:31 -0700 2011
+  Processing by TestModelsController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 9) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 26ms (Views: 20.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:51:08 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (6.0ms)
+Rendered test_models/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 34ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models" for 127.0.0.1 at Wed Mar 23 15:51:14 -0700 2011
+  Processing by TestModelsController#create as */*
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"test123", "weight"=>"12adf", "description"=>"test321"}}
+Rendered test_models/_form.html.erb (7.0ms)
+Rendered test_models/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 44ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:53:33 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 34ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 15:53:40 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf123", "weight"=>"ates", "description"=>"af32"}}
+Completed 422 Unprocessable Entity in 20ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 15:53:43 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf123", "weight"=>"ates", "description"=>"af32"}}
+Completed 422 Unprocessable Entity in 20ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 15:56:37 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (7.0ms)
+Rendered test_models/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 33ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 15:56:49 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"BxrNU/NUkbhBHyT8NqmAm3W2cQF2uvLY/zh4cbx7UjU=", "utf8"=>"✓", "test_model"=>{"name"=>"fdas12", "weight"=>"asd123", "description"=>"t1"}}
+Completed 422 Unprocessable Entity in 24ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Mar 23 18:07:17 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 122ms (Views: 33.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:07:26 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (15.0ms)
+Rendered test_models/new.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 44ms (Views: 36.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:07:31 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"kUhWY7ZeRtu7WL0KDcwQ3PJqsBSgxWFxY06upZlaBkk=", "utf8"=>"✓", "test_model"=>{"name"=>"test123", "weight"=>"s2", "description"=>"test23"}}
+Completed 422 Unprocessable Entity in 21ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:08:34 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"kUhWY7ZeRtu7WL0KDcwQ3PJqsBSgxWFxY06upZlaBkk=", "utf8"=>"✓", "test_model"=>{"name"=>"test123", "weight"=>"s2", "description"=>"test23"}}
+Completed 422 Unprocessable Entity in 18ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:08:36 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"kUhWY7ZeRtu7WL0KDcwQ3PJqsBSgxWFxY06upZlaBkk=", "utf8"=>"✓", "test_model"=>{"name"=>"test123", "weight"=>"s2", "description"=>"test23"}}
+Completed 422 Unprocessable Entity in 64ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:08:41 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"kUhWY7ZeRtu7WL0KDcwQ3PJqsBSgxWFxY06upZlaBkk=", "utf8"=>"✓", "test_model"=>{"name"=>"test123", "weight"=>"s21", "description"=>"test23"}}
+Completed 422 Unprocessable Entity in 17ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:08:43 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"kUhWY7ZeRtu7WL0KDcwQ3PJqsBSgxWFxY06upZlaBkk=", "utf8"=>"✓", "test_model"=>{"name"=>"test123", "weight"=>"21", "description"=>"test23"}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "test_models" ("updated_at", "name", "created_at", "weight", "description") VALUES ('2011-03-24 01:08:43.427813', 'test123', '2011-03-24 01:08:43.427813', 21, 'test23')[0m
+Completed 406 Not Acceptable in 159ms
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:08:56 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models"
+Rendered test_models/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 41ms (Views: 33.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/test_models/10/edit" for 127.0.0.1 at Wed Mar 23 18:08:59 -0700 2011
+  Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 10) LIMIT 1[0m
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/edit.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 34ms (Views: 27.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:09:00 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models"
+Rendered test_models/index.html.erb within layouts/application (65.0ms)
+Completed 200 OK in 86ms (Views: 79.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/10/edit" for 127.0.0.1 at Wed Mar 23 18:09:02 -0700 2011
+  Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTestModel Load (0.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 10) LIMIT 1[0m
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/edit.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 34ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models/10" for 127.0.0.1 at Wed Mar 23 18:09:03 -0700 2011
+  Processing by TestModelsController#update as HTML
+  Parameters: {"commit"=>"Update Test model", "authenticity_token"=>"kUhWY7ZeRtu7WL0KDcwQ3PJqsBSgxWFxY06upZlaBkk=", "utf8"=>"✓", "id"=>"10", "test_model"=>{"name"=>"test123", "weight"=>"21", "description"=>"test23"}}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 10) LIMIT 1
+Redirected to http://localhost:3000/test_models/10
+Completed 302 Found in 14ms
+
+
+Started GET "/test_models/10" for 127.0.0.1 at Wed Mar 23 18:09:03 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTestModel Load (0.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 10) LIMIT 1[0m
+Rendered test_models/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 26ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:09:04 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models"
+Rendered test_models/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 38ms (Views: 31.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:09:05 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (7.0ms)
+Rendered test_models/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 33ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:09:13 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"kUhWY7ZeRtu7WL0KDcwQ3PJqsBSgxWFxY06upZlaBkk=", "utf8"=>"✓", "test_model"=>{"name"=>"Hello, World!", "weight"=>"a32", "description"=>"test12"}}
+Completed 422 Unprocessable Entity in 18ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Mar 23 18:24:34 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (0.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 42ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:24:35 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 34ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:24:38 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdfasf", "weight"=>"asd23", "description"=>"sdf"}}
+Completed 422 Unprocessable Entity in 19ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:24:54 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 34ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:24:58 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"fsad32", "weight"=>"12as", "description"=>"fas1"}}
+Completed 422 Unprocessable Entity in 70ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:25:20 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"fsad32", "weight"=>"12as", "description"=>"fas1"}}
+Completed 422 Unprocessable Entity in 21ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:25:35 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (10.0ms)
+Rendered test_models/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 38ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:25:42 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf23", "weight"=>"12as", "description"=>"asdfas"}}
+Completed 422 Unprocessable Entity in 19ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:26:30 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf23", "weight"=>"12as", "description"=>"asdfas"}}
+Completed 422 Unprocessable Entity in 19ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:26:44 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (10.0ms)
+Rendered test_models/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 36ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:26:45 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 91ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:26:51 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"fasd2323a", "weight"=>"23wedscv", "description"=>"a1df"}}
+Completed 422 Unprocessable Entity in 22ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:27:24 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"fasd2323a", "weight"=>"23wedscv", "description"=>"a1df"}}
+Completed 422 Unprocessable Entity in 18ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:39:07 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 34ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:39:13 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf23r", "weight"=>"123asdf", "description"=>"asd123f"}}
+Completed 422 Unprocessable Entity in 18ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:39:16 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf23r", "weight"=>"12", "description"=>"asd123f"}}
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "test_models" ("description", "created_at", "weight", "updated_at", "name") VALUES ('asd123f', '2011-03-24 01:39:16.673669', 12, '2011-03-24 01:39:16.673669', 'asdf23r')
+Completed 406 Not Acceptable in 125ms
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:40:06 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (8.0ms)
+Rendered test_models/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 85ms (Views: 78.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:40:11 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf23", "weight"=>"23asdfasdf", "description"=>"asfd11"}}
+Completed 422 Unprocessable Entity in 18ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:40:13 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf23", "weight"=>"23asdfasdf", "description"=>"asfd11"}}
+Completed 422 Unprocessable Entity in 18ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:40:15 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"name"=>"asdf23", "weight"=>"12", "description"=>"asfd11"}}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "test_models" ("description", "updated_at", "name", "weight", "created_at") VALUES ('asfd11', '2011-03-24 01:40:15.202017', 'asdf23', 12, '2011-03-24 01:40:15.202017')[0m
+Completed 406 Not Acceptable in 127ms
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:41:08 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models"
+Rendered test_models/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 42ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateTestModels (20110323222917)
+Migrating to AddSelectablesToTestModels (20110324014155)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1mALTER TABLE "test_models" ADD "selectable_one" integer[0m
+  [1m[35mSQL (0.0ms)[0m  ALTER TABLE "test_models" ADD "selectable_two" varchar(255)
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110324014155')[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("test_models")[0m
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:46:20 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (25.0ms)
+Rendered test_models/new.html.erb within layouts/application (31.0ms)
+Completed   in 54ms
+
+ActionView::Template::Error (wrong number of arguments (3 for 2)):
+    25:   </div>
+    26:   <div class="field">
+    27:     <%= f.label :selectable_one %><br />
+    28:     <%= f.select :selectable_one, options_for_select(['One', 1], ['Two', 2], ['Three', 3]), { :include_empty => true } %>
+    29:   </div>
+    30:   <div class="actions">
+    31:     <%= f.submit %>
+  app/views/test_models/_form.html.erb:28:in `options_for_select'
+  app/views/test_models/_form.html.erb:28:in `_app_views_test_models__form_html_erb__203902231_70096404_633046'
+  app/views/test_models/_form.html.erb:1:in `_app_views_test_models__form_html_erb__203902231_70096404_633046'
+  app/views/test_models/new.html.erb:4:in `_app_views_test_models_new_html_erb___742868791_70102488_0'
+  app/controllers/test_models_controller.rb:29:in `new'
+
+Rendered C:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered C:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered C:/Ruby187/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:47:01 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (11.0ms)
+Rendered test_models/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 38ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:48:36 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 117ms (Views: 39.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:48:37 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (11.0ms)
+Rendered test_models/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 41ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:48:38 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"", "name"=>"", "weight"=>"", "description"=>""}}
+Completed 422 Unprocessable Entity in 21ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:48:41 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"1", "name"=>"", "weight"=>"123", "description"=>""}}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "test_models" ("description", "updated_at", "name", "weight", "created_at", "selectable_one", "selectable_two") VALUES ('', '2011-03-24 01:48:41.876997', '', 123, '2011-03-24 01:48:41.876997', 1, NULL)[0m
+Completed 406 Not Acceptable in 144ms
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:48:47 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"1", "name"=>"asdfasdf23", "weight"=>"123asdf", "description"=>"wer23asdf"}}
+Completed 422 Unprocessable Entity in 19ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:48:49 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"1", "name"=>"asdfasdf23", "weight"=>"", "description"=>"wer23asdf"}}
+Completed 422 Unprocessable Entity in 20ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Mar 23 18:49:07 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models"
+Rendered test_models/index.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 105ms (Views: 95.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:49:08 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (13.0ms)
+Rendered test_models/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 43ms (Views: 36.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:49:11 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"", "name"=>"", "weight"=>"", "description"=>""}}
+Completed 422 Unprocessable Entity in 24ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:50:12 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (11.0ms)
+Rendered test_models/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 38ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:50:19 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"1", "name"=>"as23", "weight"=>"123asdf", "selectable_two"=>"1", "description"=>"asdf234"}}
+Completed 422 Unprocessable Entity in 20ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:50:20 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (2.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 96ms (Views: 87.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/test_models/13/edit" for 127.0.0.1 at Wed Mar 23 18:50:22 -0700 2011
+  Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 13) LIMIT 1
+Rendered test_models/_form.html.erb (12.0ms)
+Rendered test_models/edit.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 40ms (Views: 32.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:50:23 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 46ms (Views: 38.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:50:24 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (12.0ms)
+Rendered test_models/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 39ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:50:31 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"1", "name"=>"asfasd123r", "weight"=>"asdf2312", "selectable_two"=>"1", "description"=>"asdf23"}}
+Completed 422 Unprocessable Entity in 20ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:50:33 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"1", "name"=>"asfasd123r", "weight"=>"123", "selectable_two"=>"1", "description"=>"asdf23"}}
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "test_models" ("created_at", "name", "selectable_two", "weight", "selectable_one", "description", "updated_at") VALUES ('2011-03-24 01:50:33.782397', 'asfasd123r', '1', 123, 1, 'asdf23', '2011-03-24 01:50:33.782397')
+Completed 406 Not Acceptable in 103ms
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:50:35 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[36mTestModel Load (1.0ms)[0m  [1mSELECT "test_models".* FROM "test_models"[0m
+Rendered test_models/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 47ms (Views: 39.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/test_models/14" for 127.0.0.1 at Wed Mar 23 18:50:36 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mTestModel Load (0.0ms)[0m  SELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 14) LIMIT 1
+Rendered test_models/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 31ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/14/edit" for 127.0.0.1 at Wed Mar 23 18:50:38 -0700 2011
+  Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mTestModel Load (0.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 14) LIMIT 1[0m
+Rendered test_models/_form.html.erb (12.0ms)
+Rendered test_models/edit.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 39ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for 127.0.0.1 at Wed Mar 23 18:50:40 -0700 2011
+  Processing by TestModelsController#index as HTML
+  [1m[35mTestModel Load (1.0ms)[0m  SELECT "test_models".* FROM "test_models"
+Rendered test_models/index.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 51ms (Views: 43.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/test_models/14" for 127.0.0.1 at Wed Mar 23 18:50:42 -0700 2011
+  Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mTestModel Load (0.0ms)[0m  [1mSELECT "test_models".* FROM "test_models" WHERE ("test_models"."id" = 14) LIMIT 1[0m
+Rendered test_models/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 30ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/new" for 127.0.0.1 at Wed Mar 23 18:50:49 -0700 2011
+  Processing by TestModelsController#new as HTML
+Rendered test_models/_form.html.erb (14.0ms)
+Rendered test_models/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 43ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/test_models.json" for 127.0.0.1 at Wed Mar 23 18:52:02 -0700 2011
+  Processing by TestModelsController#create as JSON
+  Parameters: {"commit"=>"Create Test model", "authenticity_token"=>"fKllixZL5D/2s1fuEO8gu99xrYgYSWouVaxq4A2jN6w=", "utf8"=>"✓", "test_model"=>{"selectable_one"=>"1", "name"=>"123asdf", "weight"=>"123", "selectable_two"=>"1", "description"=>"wef23"}}
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "test_models" ("created_at", "selectable_one", "description", "weight", "name", "updated_at", "selectable_two") VALUES ('2011-03-24 01:52:02.856492', 1, 'wef23', 123, '123asdf', '2011-03-24 01:52:02.856492', '1')
+Completed 406 Not Acceptable in 617ms

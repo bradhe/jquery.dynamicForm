@@ -1,0 +1,38 @@
+<%= form_for(@test_model, { 'data-dynamic' => 'true' }) do |f| %>
+  <% if @test_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@test_model.errors.count, "error") %> prohibited this test_model from being saved:</h2>
+
+      <ul>
+      <% @test_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :selectable_one %><br />
+    <%= f.select :selectable_one, options_for_select([['One', 1], ['Two', 2], ['Three', 3]]), { :include_blank => true } %>
+  </div>
+  <div class="field">
+    <%= f.label :selectable_two %><br />
+    <%= f.check_box :selectable_two %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
