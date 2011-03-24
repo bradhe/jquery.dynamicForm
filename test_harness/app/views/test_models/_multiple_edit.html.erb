@@ -1,0 +1,19 @@
+<%= form_tag(test_models_path, { :method => 'put' }) do %>
+  <% if @test_models_errors %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@test_model.errors.count, "error") %> prohibited this test_model from being saved:</h2>
+
+      <ul>
+      <% @test_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= @test_models.each do |test_model| %>
+    <div class="edit form">
+      <%= render 'test_models/multiple_edit_form', :form_element_prefix => "test_models[#{test_model.id}]", :test_model => test_model, :include_submit => false %>
+    </div>
+  <% end %>
+<% end %>

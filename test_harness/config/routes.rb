@@ -1,5 +1,10 @@
 Test1::Application.routes.draw do
-  resources :test_models
+  resources :test_models do
+    collection do
+      post :edit
+      put :update
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

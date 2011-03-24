@@ -4,18 +4,30 @@
     var d = {};
     
     var settings = {
+      // Callback for when the AJAX request is done and stuff.
       success: null,
+      // Callback for when an error occurs server side.
       error: null,
+      // Selector for where to poop error messages from validation on to.
       errorListSelector: null,
+      // Callback for when AJAX starts.
       submitStart: function() {}, // Just swallow these things.
+      // Callback for when AJAX is complete.
       submitDone: function() {},
+      // Automatically populate $(errorListSelector) with error messages in the form of <li/>'s
       autoShowErrors: true,
-      requestType: 'json'
+      // The type of data to expect from the server. JSON will automatically parse the string to an object.
+      responseType: 'json',
+      // Automatically hook up the submit event for the form element.
+      autoWireSubmit: true
     };
     
     if(options) {
       $.extend(settings, options);
     }
+    
+    // Do a good deed, make sure response type is lower case.
+    settings.responseType = settings.responseType.toLowerCase();
     
     function getData() {
       // Gather up all of the element's values and stick
@@ -56,10 +68,27 @@
           }
           // Otherwise just assume it's an object I guess.
           
-          data[pre][post] = val;
+          if(data[pre][post] && !$.isArray(data[pre][post])) {
+            data[pre][post] = [data[pre][post], val];
+          }
+          else if(data[pre][post]) {
+            data[pre][post].push(val);
+          }
+          else {
+            data[pre][post] = val;
+          }
         }
         else {
-          data[n] = val;
+          // Wish I didn't have to copy-pasta this.
+          if(data[n] && !$.isArray(data[n])) {
+            data[n] = [data[n], val];
+          }
+          else if(data[n]) {
+            data[n].push(val);
+          }
+          else {
+            data[n] = val;
+          }
         }
       }
       
@@ -86,13 +115,6 @@
     }
     
     d.onSubmit = function() {
-      var data = getData();
-      
-      // If there is an error list we should clear it.
-      if(settings.errorListSelector && settings.autoShowErrors) {
-        $(settings.errorListSelector).empty();
-      }
-      
       // Initiate the post.
       var method = $(form).attr('method') || 'POST';
       var action = $(form).attr('action');
@@ -100,18 +122,36 @@
       if(!action) {
         throw "No action specified on the element. Sepecify one so we know where to post to!";
       }
+
+      return d.submit(action, method, getData());
+    }
+    
+    d.submit = function(action, method, data) {
+      // Yoink the data from the form if we haven't already.
+      if(!data) {
+        data = getData();
+      }
       
-      // Figure out what the format of the return message is going to be.
-      if(settings.requestType == 'json') {
-        // Ensure that the action ends with .json to tell the server side that
-        // thsi is a JSON request!
-        var matches = action.match(/\..*/);
+      // If there is an error list we should clear it.
+      if(settings.errorListSelector && settings.autoShowErrors) {
+        $(settings.errorListSelector).empty();
+      }
+
+      // Ensure that the action ends with .json to tell the server side that
+      // thsi is a JSON request!
+      var matches = action.match(/\..*/);
+      var extension = '.' + settings.responseType;
+      
+      // TODO: Figure out if we should rip off the end of the thing. Perhaps in certain cases
+      // we should, i.e. if it ends in .xml or something?
+      if(!matches || (matches.length < 1) || (matches[0].toLowerCase() != extension)) {
+        action += extension;
+      }
         
-        // TODO: Figure out if we should rip off the end of the thing. Perhaps in certain cases
-        // we should, i.e. if it ends in .xml or something?
-        if(!matches || (matches.length < 1) || (matches[0].toLowerCase() != '.json')) {
-          action += '.json'
-        }
+      // If the method isn't defined we should try to deduce the method.
+      // If we can't deduce the method, default to POST.
+      if(!method) {
+        method = $(form).attr('method') || 'POST';
       }
       
       // Whew, this is crazyness.
@@ -119,38 +159,55 @@
         url: action,
         type: method,
         data: data,
-        beforeSend: settings.submitStart,
-        complete: settings.submitDone,
+        beforeSend: function() {
+            // TODO: Make sure that buttons that SHOULD be disabled don't end up un-disabled.
+            $(form).find('input[type="submit"], button[type="submit"]').attr('disabled', true);
+            settings.submitStart();
+        },
+        complete: function() {
+            $(form).find('input[type="submit"], button[type="submit"]').removeAttr('disabled');
+            settings.submitDone();
+        },
         success: function(data, request, status) {
           if($.isFunction(settings.success)) {
             settings.success(data, request, status);
           }
         },
-        error: function(jqXHR, textStatus, errorThrown) { 
-          if($.isFunction(settings.error)) {
-            // Get the response text and turn it in to JSON.
-            var json = null;
-            
-            try {
-              var json = JSON.parse(jqXHR.responseText);
+        error: function(jqXHR, textStatus, errorThrown) {
+            if(settings.responseType == 'json') {
+              // Get the response text and turn it in to JSON.
+              var json = null;
+              
+              try {
+                json = JSON.parse(jqXHR.responseText);
+              }
+              catch(err) {
+                throw "Failed to parse JSON message '" + jqXHR.responseText + "' Error: " + err;
+              }
+              
+              populateErrorList(json);
+              
+              // Send across the errors too.
+              if($.isFunction(settings.error)) {
+                  settings.error(json);
+              }
             }
-            catch(err) {
-              throw "Failed to parse JSON message '" + jqXHW.responseText + "' Error: " + err;
+            else {
+              // Send across the errors too.
+              if($.isFunction(settings.error)) {
+                  settings.error(jqXHR.responseText);
+              }            
             }
-            
-            populateErrorList(json);
-            
-            // Send across the errors too.
-            settings.error(json);
-          }
         }
       });
       
       return false;
     }
     
-    // Wire up any event handlers here.
-    $(form).submit(function() { return d.onSubmit(); });
+    if(settings.autoWireSubmit) {
+      // Wire up any event handlers here.
+      $(form).submit(function() { return d.onSubmit(); });
+    }
     
     return d;
   }
@@ -163,6 +220,8 @@
       
       $.dynamicForms.push(new DynamicForm(this, options));
     });
+    
+    return $.dynamicForms;
   };
 
   $(function() {

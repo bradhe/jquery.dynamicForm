@@ -34,7 +34,20 @@ class TestModelsController < ApplicationController
 
   # GET /test_models/1/edit
   def edit
-    @test_model = TestModel.find(params[:id])
+    if request.post? 
+      test_models = []
+      params[:test_model_id].each { |i| test_models << TestModel.find(i) }
+      
+      # Available outside closure.
+      @test_models = test_models
+
+      respond_to do |format|
+        format.json { render :json => @test_models }
+        format.html { render :partial => 'test_models/multiple_edit' }
+      end
+    else
+      @test_model = TestModel.find(params[:id])
+    end
   end
 
   # POST /test_models
